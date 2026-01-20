@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    :root{
+        --background: #fff;
+        --border: #C7C7C7;
+        --text: #575757;
+        --outline: #8cb8fb;
+    }
+
+    @media(prefers-color-scheme: dark){
+        :root{
+            --background: #1D1B1D;
+            --border: #383838;
+            --text: #A9A9A9;
+            --outline: #0d4491;
+        }
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+        background: var(--background);
+        transform: scale(2.7);
+        overflow: hidden;
+    }
+
+    #query{
+        border: 1px solid var(--border);
+        background: var(--background);
+        padding: 6px 12px;
+        border-radius: 12px;
+        color: var(--text);
+    }
+
+    #query:focus{
+        outline: none;
+        box-shadow: 0 0 5px var(--outline);
+        border: 1px solid var(--outline);
+    }
+
+    #submit{
+        background: #007AFF;
+        border: 1px solid var(--border);
+        padding: 6px 2px;
+        border-radius: 50px;
+    }
+
+    form{
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 6px 9px;
+    }
+
+    img{
+        transform: translateX(50px);
+    }
+</style>
+<body>
+<form id="googleForm">
+    <div>
+    <img src="logo.png" alt="" width="100px">
+    </div>
+  <input type="text" id="query" placeholder=" Что ищем?">
+  <button type="submit" id="submit">
+    <svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+</button>
+</form>
+
+<script>
+document.getElementById('googleForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // чтобы страница не перезагружалась
+    const query = document.getElementById('query').value;
+    if(query) {
+        // открываем новый таб с поиском Google
+        window.location.href='https://www.google.com/search?q=' + encodeURIComponent(query);
+    }
+});
+</script>
+</body>
+</html>
